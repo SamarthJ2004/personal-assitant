@@ -1,0 +1,1 @@
+export const Methods = ["Chat Bot", "Task Automation","Content Generation", "Summarization","Coder","Translator"]

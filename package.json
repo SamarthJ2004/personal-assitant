@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2",
     "next": "15.1.4",
+    "openai": "^4.78.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
