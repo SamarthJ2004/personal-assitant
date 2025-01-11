@@ -1,16 +1,20 @@
-import TextInput from "@/components/TextInput";
+"use client"
+import { useState } from "react";
+import MainWindow from "@/components/MainWindow";
 import Options from "@/components/Options";
-import { Methods } from "@/constants/Methods"
+
 
 const Home = () => {
-  console.log(Methods)
+  const [selectedMethod, setSeletedMethod] = useState<string|null>(null);
+  const Methods = ["Chat Bot", "Task Automation","Content Generation", "Summarization","Coder","Translator"];
+  
   return (
     <div className='flex justify-center items-center h-full w-full'>
       <div className='w-[86%] h-[86%] bg-slate-500 rounded-2xl flex'>
-        <div className='w-[30%] bg-slate-600 rounded-l-2xl flex flex-col items-center py-8 overflow-scroll'>
-          {Methods.map((item, index) => <Options key={index} item={item} />)}
-        </div>
-        <TextInput />
+        <ul className='w-[30%] bg-slate-600 rounded-l-2xl flex flex-col items-center py-8 overflow-scroll'>
+          {Methods.map((method, index) => <Options key={index} method={method} selectedMethod={selectedMethod} setSeletedMethod={setSeletedMethod}/>)}
+        </ul>
+        <MainWindow selectedMethod={selectedMethod}/>
       </div>
     </div>
   );

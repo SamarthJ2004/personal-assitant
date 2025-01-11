@@ -1,9 +1,16 @@
 "use client"
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const TextInput = () => {
   const [message, setMessage] = useState('');
-  const [responses, setResponses] = useState<string[]>([]);
+  const [responses, setResponses] = useState<string[]>(() => {
+    const jsonResponse = localStorage.getItem('responses');
+    return jsonResponse ? JSON.parse(jsonResponse): [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('responses', JSON.stringify(responses));
+  }, [responses]);
 
   const sendMessage = async () => {
     try {
@@ -21,7 +28,10 @@ const TextInput = () => {
 
       const data = await response.json();
       console.log(data);
-      setResponses([...responses, message,data[0].message.content]);
+      setResponses(prevResponses => {
+        const updatedResponses = [...prevResponses, message, data];
+        return updatedResponses.length > 16 ? updatedResponses.slice(updatedResponses.length - 16) : updatedResponses;
+      });
       setMessage('');
     } catch (error) {
       console.error(error);
@@ -29,8 +39,8 @@ const TextInput = () => {
   };
 
   return (
-    <div className='p-10 w-full flex flex-col justify-end'>
-      <div className='flex flex-col items-center overflow-scroll mb-2'>
+    <div className='w-full flex flex-col justify-center h-full'>
+      <div className='flex flex-col items-center overflow-scroll mb-2 h-[78%]'>
         {responses.map((res, index) => (
           <p key={index} className={`${index%2?'bg-gray-600 mb-5':'bg-zinc-500 mb-1'} rounded-xl p-4 w-[80%]`}>{res}</p>
         ))}
