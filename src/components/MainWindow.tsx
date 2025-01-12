@@ -1,3 +1,4 @@
+import Automation from "./Automation";
 import TextInput from "./TextInput";
 
 const MainWindow = ({selectedMethod}:{selectedMethod: string|null}) => {
@@ -16,11 +17,7 @@ const MainWindow = ({selectedMethod}:{selectedMethod: string|null}) => {
       case 'Chat Bot':
         return <TextInput />;
       case 'Task Automation':
-        return <div>Task Automation functionality goes here...</div>;
-      case 'Content Generation':
-        return <div>Content Generation functionality goes here...</div>;
-      case 'Summarization':
-        return <div>Summarization functionality goes here...</div>;
+        return <Automation />;
       case 'Coder':
         return <div>Coder functionality goes here...</div>;
       case 'Translator':

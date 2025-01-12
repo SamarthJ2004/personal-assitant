@@ -1,6 +1,6 @@
 import { FaRobot, FaTasks, FaRegFileAlt, FaCode, FaLanguage } from 'react-icons/fa';
 
-const Options = ({method,selectedMethod,setSeletedMethod}: {method: string,selectedMethod:string|null,setSelectedMethod}) => {
+const Options = ({method,selectedMethod,setSelectedMethod}: {method: string,selectedMethod:string|null,setSelectedMethod: (value: string|null) => void}) => {
 
   const getIcon = (method: string) => {
     switch (method) {
@@ -22,7 +22,7 @@ const Options = ({method,selectedMethod,setSeletedMethod}: {method: string,selec
   };
 
   return (
-    <li className={`cursor-pointer text-white ${selectedMethod === method ? 'font-bold' : ''} w-[80%] bg-gray-800 mb-2 p-5 rounded-lg text-lg`} onClick={()=> setSeletedMethod(method)}>
+    <li className={`cursor-pointer text-white ${selectedMethod === method ? 'font-bold' : ''} w-[80%] bg-gray-800 mb-2 p-5 rounded-lg text-lg select-none`} onClick={()=> setSelectedMethod(method)}>
       {getIcon(method)} {method}
     </li>
   )
