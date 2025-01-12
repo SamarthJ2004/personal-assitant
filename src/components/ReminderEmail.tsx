@@ -33,11 +33,29 @@ const ReminderEmail = ({ setAutomation }: { setAutomation: (value: string | null
 
       const botMessage = await response.json();
       setEmailPreview(botMessage);
-      reset();
     } catch (error) {
       console.error(error);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const scheduleEmail = async(data: FormData, emailPreview : string) => {
+    try {
+      const response = await fetch('api/email', {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({recipientEmail: data.to,subject: data.subject,sendTime: data.timeToSend,emailContent: emailPreview}),
+      });
+
+      if (!response.ok) throw new Error('Failed to schedule email');
+      console.log("Scheduling Response: ",response);
+      alert("Email scheduled successfully");
+      reset();
+      setAutomation(null);
+      setEmailPreview(null);
+    }catch (error){
+      console.error("Scheduling Error",error);
     }
   };
 
@@ -61,10 +79,7 @@ const ReminderEmail = ({ setAutomation }: { setAutomation: (value: string | null
           <div className="mt-6 p-4 border bg-gray-100 w-full max-w-md">
             <h3 className="text-lg font-bold mb-2">Email Preview:</h3>
             {emailPreview}
-            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded" onClick={() => {
-              alert("Email scheduled successfully!");
-              setAutomation(null);
-            }}>
+            <button className="mt-4 bg-green-500 text-white px-4 py-2 rounded" onClick={() => handleSubmit((data) => scheduleEmail(data,emailPreview))()}>
               Confirm & Schedule
             </button>
           </div>
