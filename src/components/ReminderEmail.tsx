@@ -66,9 +66,9 @@ const ReminderEmail = ({ setAutomation }: { setAutomation: (value: string | null
 
       <div className="h-[90%] flex flex-col justify-center items-center text-black">
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
-          <input type="email" {...register('to')} placeholder="Recipient's Email" className="mb-4 block text-white text-bold w-full p-2 border rounded-lg"/>
+          <input type="email" {...register('to')} placeholder="Recipient's Email" className="mb-4 block text-black text-bold w-full p-2 border rounded-lg"/>
           {errors.to && <p>{errors.to.message}</p>}
-          <input type="text" {...register('subject')} placeholder="Email Subject" className="mb-4 block text-white text-bold w-full p-2 border rounded-lg"/>
+          <input type="text" {...register('subject')} placeholder="Email Subject" className="mb-4 block text-black text-bold w-full p-2 border rounded-lg"/>
           {errors.subject && <p>{errors.subject.message}</p>}
           <input type="datetime-local" {...register('timeToSend')} placeholder="Time to Send" className="mb-4 block text-bold w-full p-2 border rounded-lg"/>
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded" disabled={isSubmitting}>
