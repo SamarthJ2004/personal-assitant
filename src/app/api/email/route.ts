@@ -45,7 +45,7 @@ export async function POST(req: Request) {
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      max_tokens: 100,
+      max_tokens: 150,
       messages: [
         { role:"developer", content:"You write formal emails in not more than 50 words. Start with a proper salutation. Don't include any other information other than the email just return the body.For the recipient name put Sir/Maam and don't include any ending regards."},
         { role:"user", content:`Write an email about ${subject}`}

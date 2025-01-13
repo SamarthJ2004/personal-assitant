@@ -3,7 +3,7 @@ import { useState } from "react";
 import ReminderEmail from "./ReminderEmail";
 import WeatherUpdate from "./WeatherUpdate";
 import MediaPosting from "./MediaPosting";
-import StockPrice from "./StockPrice";
+import CryptoAlertForm from "./StockPrice";
 
 const Automation = () => {
   const [automation,setAutomation] = useState<string|null>(null);
@@ -17,9 +17,9 @@ const Automation = () => {
       case "Weather Update":
         return <WeatherUpdate />;
       case "Media Posting":
-        return <MediaPosting/>;
+        return <MediaPosting />;
       case "Stock Price Checker":
-        return <StockPrice />;
+        return <CryptoAlertForm setAutomation={setAutomation}/>;
       default:
         return (
           <div className="flex flex-col justify-center items-center">
