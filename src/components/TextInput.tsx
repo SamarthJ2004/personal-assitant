@@ -12,6 +12,11 @@ const TextInput = () => {
     localStorage.setItem('responses', JSON.stringify(responses));
   }, [responses]);
 
+  const newChat = () => {
+    localStorage.removeItem("responses");
+    setResponses([]);
+  }
+
   const sendMessage = async () => {
     try {
       const response = await fetch('/api/chat', {
@@ -54,6 +59,7 @@ const TextInput = () => {
           placeholder='Type your message here'
         />
         <button onClick={sendMessage} disabled={message.length==0} className='bg-white w-16 h-9 rounded-xl ml-3 text-black disabled:opacity-50 disabled:cursor-not-allowed'>Send</button>
+        <button onClick={newChat} disabled={responses.length==0} className='bg-white w-24 h-9 rounded-xl ml-3 text-black disabled:opacity-50 disabled:cursor-not-allowed'>New Chat</button>
       </div>
     </div>
   )
