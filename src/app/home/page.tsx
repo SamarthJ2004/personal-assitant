@@ -7,7 +7,7 @@ import Options from "@/components/Options";
 
 const Home = () => {
   const [selectedMethod, setSeletedMethod] = useState<string | null>(null);
-  const Methods = ["Chat Bot", "Task Automation", "Voice Bot", "Translator"];
+  const Methods = ["Chat Bot", "Task Automation", "Voice Bot", "Translator", "Logout"];
   const router = useRouter();
 
   useEffect(() => {

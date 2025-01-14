@@ -1,4 +1,4 @@
-import { FaRobot, FaTasks, FaLanguage, FaVoicemail} from 'react-icons/fa';
+import { FaRobot, FaTasks, FaLanguage, FaVoicemail, FaLockOpen} from 'react-icons/fa';
 
 const Options = ({method,selectedMethod,setSelectedMethod}: {method: string,selectedMethod:string|null,setSelectedMethod: (value: string|null) => void}) => {
 
@@ -12,6 +12,8 @@ const Options = ({method,selectedMethod,setSelectedMethod}: {method: string,sele
         return <FaVoicemail />
       case 'Translator':
         return <FaLanguage />;
+      case "Logout":
+        return <FaLockOpen/>
       default:
         return null;
     }
