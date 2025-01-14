@@ -1,23 +1,13 @@
-"use client"
-import { useState } from "react";
-import MainWindow from "@/components/MainWindow";
-import Options from "@/components/Options";
+'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
+export default function RedirectToLogin() {
+  const router = useRouter();
 
-const Home = () => {
-  const [selectedMethod, setSeletedMethod] = useState<string|null>(null);
-  const Methods = ["Chat Bot", "Task Automation","Voice Bot","Translator"];
-  
-  return (
-    <div className='flex justify-center items-center h-full w-full'>
-      <div className='w-[86%] h-[86%] bg-slate-500 rounded-2xl flex'>
-        <ul className='w-[30%] bg-slate-600 rounded-l-2xl flex flex-col items-center py-8 overflow-scroll'>
-          {Methods.map((method, index) => <Options key={index} method={method} selectedMethod={selectedMethod} setSelectedMethod={setSeletedMethod}/>)}
-        </ul>
-        <MainWindow selectedMethod={selectedMethod}/>
-      </div>
-    </div>
-  );
-};
+  useEffect(() => {
+    router.push('/login');
+  }, [router]);
 
-export default Home;
+  return null;
+}
