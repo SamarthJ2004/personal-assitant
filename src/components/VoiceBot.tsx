@@ -53,6 +53,13 @@ export default function VoiceBot() {
     }
   };
 
+  function textToSpeech(text:string) {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    synth.speak(utterance);
+  }
+
   const sendToOpenAI = async(transcript: string) => {
     try {
       const response = await fetch("/api/voice",{
@@ -70,6 +77,9 @@ export default function VoiceBot() {
       const data = await response.json();
 
       setResponses([...responses, transcript, data]);
+
+      textToSpeech(data);
+      
       setTranscript("");
     } catch (error) {
       console.log("Error sending voice mail: ", error)
