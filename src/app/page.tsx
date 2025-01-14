@@ -6,7 +6,7 @@ import Options from "@/components/Options";
 
 const Home = () => {
   const [selectedMethod, setSeletedMethod] = useState<string|null>(null);
-  const Methods = ["Chat Bot", "Task Automation","Voice","Coder","Translator"];
+  const Methods = ["Chat Bot", "Task Automation","Voice Bot","Translator"];
   
   return (
     <div className='flex justify-center items-center h-full w-full'>

@@ -1,14 +1,13 @@
 import Automation from "./Automation";
 import TextInput from "./TextInput";
+import VoiceBot from "./VoiceBot";
 
 const MainWindow = ({selectedMethod}:{selectedMethod: string|null}) => {
 
   const Methods = [
     "Chat Bot",
     "Task Automation",
-    "Content Generation",
-    "Summarization",
-    "Coder",
+    "Voice Bot",
     "Translator",
   ];
 
@@ -18,8 +17,8 @@ const MainWindow = ({selectedMethod}:{selectedMethod: string|null}) => {
         return <TextInput />;
       case 'Task Automation':
         return <Automation />;
-      case 'Coder':
-        return <div>Coder functionality goes here...</div>;
+      case "Voice Bot":
+        return <VoiceBot />
       case 'Translator':
         return <div>Translator functionality goes here...</div>;
       default:

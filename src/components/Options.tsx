@@ -1,4 +1,4 @@
-import { FaRobot, FaTasks, FaRegFileAlt, FaCode, FaLanguage } from 'react-icons/fa';
+import { FaRobot, FaTasks, FaLanguage, FaVoicemail} from 'react-icons/fa';
 
 const Options = ({method,selectedMethod,setSelectedMethod}: {method: string,selectedMethod:string|null,setSelectedMethod: (value: string|null) => void}) => {
 
@@ -8,12 +8,8 @@ const Options = ({method,selectedMethod,setSelectedMethod}: {method: string,sele
         return <FaRobot />;
       case 'Task Automation':
         return <FaTasks />;
-      case 'Content Generation':
-        return <FaRegFileAlt />;
-      case 'Summarization':
-        return <FaRegFileAlt />;
-      case 'Coder':
-        return <FaCode />;
+      case "Voice Bot":
+        return <FaVoicemail />
       case 'Translator':
         return <FaLanguage />;
       default:
